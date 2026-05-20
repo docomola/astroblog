@@ -1,0 +1,95 @@
+---
+const features = [
+  {
+    icon: '🎯',
+    title: 'Lead Generation',
+    description: 'Find and connect with qualified LinkedIn prospects using AI-powered search and filtering.',
+    color: '#2563EB',
+  },
+  {
+    icon: '📊',
+    title: 'Analytics Dashboard',
+    description: 'Track campaign performance, lead conversion rates, and ROI in real-time visual dashboards.',
+    color: '#10B981',
+  },
+  {
+    icon: '✉️',
+    title: 'Email Outreach',
+    description: 'Automated personalized email sequences that land in inboxes, not spam folders.',
+    color: '#F59E0B',
+  },
+  {
+    icon: '🤖',
+    title: 'AI Personalization',
+    description: 'Smart message crafting that adapts to each prospect\'s profile and engagement history.',
+    color: '#8B5CF6',
+  },
+];
+---
+
+<section class="features section" id="features">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Core Features</span>
+      <h2 class="section-title">Elevate Your LinkedIn Profile With Smart Automation</h2>
+      <p class="section-subtitle">Everything you need to scale your LinkedIn outreach without hiring a bigger team.</p>
+    </div>
+    <div class="feature-grid">
+      {features.map((f) => (
+        <div class="feature-card card">
+          <div class="feature-icon" style={`background:${f.color}15;color:${f.color}`}>
+            {f.icon}
+          </div>
+          <h3 class="feature-title">{f.title}</h3>
+          <p class="feature-desc">{f.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .section-header .section-subtitle {
+    margin: 0 auto;
+  }
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .feature-card {
+    text-align: left;
+    padding: 28px;
+  }
+  .feature-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  .feature-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-secondary);
+    margin-bottom: 8px;
+  }
+  .feature-desc {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+  @media (max-width: 1024px) {
+    .feature-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .feature-grid { grid-template-columns: 1fr; }
+  }
+</style>
