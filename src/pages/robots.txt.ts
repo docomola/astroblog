@@ -1,21 +1,13 @@
-import type { APIRoute } from 'astro';
+import type { APIRoute } from 'astro'
 
-export const GET: APIRoute = ({ site }) => {
-  const siteUrl = site?.toString() || 'https://example.com';
-
-  const robotsTxt = `
+const getRobotsTxt = (sitemapURL: URL) => `
 User-agent: *
 Allow: /
 
-# Block API routes
-Disallow: /api/
+Sitemap: ${sitemapURL.href}
+`
 
-Sitemap: ${siteUrl}sitemap-index.xml
-`.trim();
-
-  return new Response(robotsTxt, {
-    headers: {
-      'Content-Type': 'text/plain; charset=utf-8',
-    },
-  });
-};
+export const GET: APIRoute = ({ site }) => {
+  const sitemapURL = new URL('sitemap-index.xml', site)
+  return new Response(getRobotsTxt(sitemapURL))
+}

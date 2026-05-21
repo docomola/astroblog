@@ -1,60 +1,78 @@
-/**
- * Format a date for display
- */
-export function formatDate(date: Date, locale = 'en-US'): string {
-  return new Intl.DateTimeFormat(locale, {
+import { type ClassValue, clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+
+export function formatDate(date: Date) {
+  return Intl.DateTimeFormat('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-  }).format(date);
+  }).format(date)
+}
+
+export function calculateWordCountFromHtml(
+  html: string | null | undefined,
+): number {
+  if (!html) return 0
+  const textOnly = html.replace(/<[^>]+>/g, '')
+  return textOnly.split(/\s+/).filter(Boolean).length
+}
+
+export function readingTime(wordCount: number): string {
+  const readingTimeMinutes = Math.max(1, Math.round(wordCount / 200))
+  return `${readingTimeMinutes} min read`
+}
+
+export function getHeadingMargin(depth: number): string {
+  const margins: Record<number, string> = {
+    3: 'ml-4',
+    4: 'ml-8',
+    5: 'ml-12',
+    6: 'ml-16',
+  }
+  return margins[depth] || ''
 }
 
 /**
- * Calculate reading time for content
+ * Get the appropriate badge variant, custom classes, and tooltip for a tag
+ * @param tag - The tag name
+ * @returns Object with variant, className, and optional tooltip for styling
  */
-export function getReadingTime(content: string): number {
-  const wordsPerMinute = 200;
-  const words = content.trim().split(/\s+/).length;
-  return Math.ceil(words / wordsPerMinute);
-}
+export function getTagVariant(tag: string): {
+  variant: 'default' | 'muted' | 'destructive' | 'outline'
+  className?: string
+  tooltip?: string
+} {
+  const normalizedTag = tag.toLowerCase().trim()
 
-/**
- * Generate a unique ID
- */
-export function generateId(prefix = 'id'): string {
-  return `${prefix}-${Math.random().toString(36).slice(2, 9)}`;
-}
-
-/**
- * Check if a URL is external
- */
-export function isExternalUrl(url: string): boolean {
-  return url.startsWith('http://') || url.startsWith('https://');
-}
-
-/**
- * Resolve a flat array of social profile URLs into structured link objects.
- * Matches each URL against known platforms to derive icon name and label.
- */
-const SOCIAL_PLATFORMS = [
-  { key: 'github',    match: /github\.com/i,                  label: 'GitHub',      icon: 'github'    },
-  { key: 'twitter',   match: /x\.com|twitter\.com/i,          label: 'X / Twitter', icon: 'x-twitter' },
-  { key: 'linkedin',  match: /linkedin\.com/i,                label: 'LinkedIn',    icon: 'linkedin'  },
-  { key: 'instagram', match: /instagram\.com/i,               label: 'Instagram',   icon: 'instagram' },
-  { key: 'bluesky',   match: /bsky\.app|bluesky\.social/i,    label: 'Bluesky',     icon: 'bluesky'   },
-] as const;
-
-export interface ResolvedSocialLink {
-  key: string;
-  href: string;
-  label: string;
-  icon: string;
-}
-
-export function resolveSocialLinks(urls: string[]): ResolvedSocialLink[] {
-  return urls.flatMap((href) => {
-    const platform = SOCIAL_PLATFORMS.find((p) => p.match.test(href));
-    if (!platform) return [];
-    return [{ key: platform.key, href, label: platform.label, icon: platform.icon }];
-  });
+  switch (normalizedTag) {
+    case 'experimental':
+      return {
+        variant: 'default',
+        // Option 1: Amber/Gold (recommended - elegant and professional)
+        className: 'bg-amber-500 border-amber-500/50 text-white hover:!bg-amber-500 hover:!text-white dark:bg-amber-600 dark:border-amber-600/50 dark:hover:!bg-amber-600',
+        
+        // Option 2: Yellow muted (more subtle, less vibrant)
+        // className: 'bg-yellow-500/80 hover:bg-yellow-500 border-yellow-500/40 text-white dark:bg-yellow-600/70 dark:hover:bg-yellow-600 dark:border-yellow-600/40',
+        
+        // Option 3: Orange muted (less aggressive than original)
+        // className: 'bg-orange-500/80 hover:bg-orange-500 border-orange-500/40 text-white dark:bg-orange-600/70 dark:hover:bg-orange-600 dark:border-orange-600/40',
+        
+        // tooltip: 'This content is experimental and may not follow best practices or require modifications',
+      }
+    // You can add more special tags here in the future
+    // case 'featured':
+    //   return {
+    //     variant: 'default',
+    //     className: 'bg-blue-500/90 hover:bg-blue-500 border-blue-500/50 text-white',
+    //     tooltip: 'Featured content',
+    //   }
+    default:
+      return {
+        variant: 'muted',
+      }
+  }
 }
