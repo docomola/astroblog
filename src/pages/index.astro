@@ -9,7 +9,7 @@ import Layout from '@/layouts/Layout.astro'
 import { Icon } from 'astro-icon/components'
 import { getRecentPosts } from '@/lib/data-utils'
 import { cn } from '@/lib/utils'
-import { SOCIAL_LINKS, ICON_MAP, SITE } from '@/consts'
+import { SOCIAL_LINKS, ICON_MAP, SITE, BASE } from '@/consts'
 import type { SocialLink } from '@/types'
 
 // Error handling for fetching recent posts
@@ -122,11 +122,11 @@ const experience: ExperienceItem[] = [
           
           <!-- CTA Buttons -->
           <div class="flex flex-wrap items-center gap-3 pt-2">
-            <Link href="/blog" class={buttonVariants({ variant: 'default', size: 'lg' })}>
+            <Link href={`${BASE}/blog`} class={buttonVariants({ variant: 'default', size: 'lg' })}>
               Read the blog
               <Icon name="lucide:arrow-right" class="size-4" />
             </Link>
-            <Link href="/about" class={buttonVariants({ variant: 'outline', size: 'lg' })}>
+            <Link href={`${BASE}/about`} class={buttonVariants({ variant: 'outline', size: 'lg' })}>
               About me
             </Link>
           </div>
@@ -222,7 +222,7 @@ const experience: ExperienceItem[] = [
           <p class="text-sm text-muted-foreground">Recent insights and articles</p>
         </div>
         <Link 
-          href="/blog" 
+          href={`${BASE}/blog`} 
           class={buttonVariants({ variant: 'ghost' }) + ' hidden sm:flex items-center gap-1.5'}
         >
           View all
@@ -240,7 +240,7 @@ const experience: ExperienceItem[] = [
       
       <article class="mt-2 sm:hidden">
         <Link
-          href="/blog"
+          href={`${BASE}/blog`}
           aria-label="View all blog posts"
           class="group block py-3 px-2 rounded-md border border-border/50 bg-muted/20 hover:bg-muted/40 hover:border-primary/30 transition-all duration-200"
         >

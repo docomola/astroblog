@@ -1,5 +1,8 @@
 import type { IconMap, SocialLink, Site } from '@/types'
 
+// Base path for GitHub Pages subpath deployment
+export const BASE = '/astroblog'
+
 export const SITE: Site = {
   title: 'DOCOMOLA',
   description:
@@ -43,11 +46,11 @@ export const BREVO = {
 
 export const NAV_LINKS: SocialLink[] = [
   {
-    href: '/blog',
+    href: `${BASE}/blog`,
     label: 'Blog',
   },
   {
-    href: '/about',
+    href: `${BASE}/about`,
     label: 'About',
   },
 ]
@@ -62,7 +65,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
     label: 'Email',
   },
   {
-    href: '/rss.xml',
+    href: `${BASE}/rss.xml`,
     label: 'RSS',
   },
 ]
@@ -79,6 +82,6 @@ export const ICON_MAP: IconMap = {
 // Newsletter consent text (centralized for GDPR compliance)
 export const NEWSLETTER_CONSENT_TEXT = {
   text: 'I agree to receive newsletter emails.',
-  privacyLink: '/privacy',
+  privacyLink: `${BASE}/privacy`,
   privacyText: 'Privacy Policy',
 }

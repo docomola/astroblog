@@ -1,5 +1,5 @@
 ---
-import { SOCIAL_LINKS, NAV_LINKS, SITE } from '@/consts'
+import { SOCIAL_LINKS, NAV_LINKS, SITE, BASE } from '@/consts'
 import SocialIcons from './SocialIcons.astro'
 import Link from '@/components/Link.astro'
 import Newsletter from './react/Newsletter'
@@ -71,10 +71,10 @@ const isExternalLink = (href: string) => {
         <div>
           <h4 class="text-sm font-semibold mb-3 text-foreground">Legal</h4>
           <nav class="flex flex-col gap-2">
-            <Link href="/privacy" class="text-sm text-muted-foreground hover:text-primary transition-colors">
+            <Link href={`${BASE}/privacy`} class="text-sm text-muted-foreground hover:text-primary transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms" class="text-sm text-muted-foreground hover:text-primary transition-colors">
+            <Link href={`${BASE}/terms`} class="text-sm text-muted-foreground hover:text-primary transition-colors">
               Terms of Service
             </Link>
           </nav>
