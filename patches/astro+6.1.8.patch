@@ -1,0 +1,16 @@
+diff --git a/node_modules/astro/dist/assets/build/remote.js b/node_modules/astro/dist/assets/build/remote.js
+index b908221..dd5332e 100644
+--- a/node_modules/astro/dist/assets/build/remote.js
++++ b/node_modules/astro/dist/assets/build/remote.js
+@@ -1,10 +1,7 @@
+ import CachePolicy from "http-cache-semantics";
+ async function loadRemoteImage(src, fetchFn = globalThis.fetch) {
+   const req = new Request(src);
+-  const res = await fetchFn(req, { redirect: "manual" });
+-  if (res.status >= 300 && res.status < 400) {
+-    throw new Error(`Failed to load remote image ${src}. The request was redirected.`);
+-  }
++  const res = await fetchFn(req, { redirect: "follow" });
+   if (!res.ok) {
+     throw new Error(
+       `Failed to load remote image ${src}. The request did not return a 200 OK response. (received ${res.status}))`
