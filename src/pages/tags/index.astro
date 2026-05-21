@@ -5,6 +5,7 @@ import PageHead from '@/components/PageHead.astro'
 import { badgeVariants } from '@/components/ui/badge'
 import Layout from '@/layouts/Layout.astro'
 import { getSortedTags } from '@/lib/data-utils'
+import { BASE } from '@/consts'
 import { Icon } from 'astro-icon/components'
 
 const sortedTags = await getSortedTags()
@@ -19,7 +20,7 @@ const sortedTags = await getSortedTags()
       {
         sortedTags.map(({ tag, count }) => (
           <Link
-            href={`/tags/${tag}`}
+            href={`${BASE}/tags/${tag}`}
             class={badgeVariants({ variant: 'muted' })}
           >
             <Icon name="lucide:hash" class="size-3" />

@@ -2,6 +2,7 @@
 import { Icon } from 'astro-icon/components'
 import Link from '@/components/Link.astro'
 import { getSortedTags } from '@/lib/data-utils'
+import { BASE } from '@/consts'
 
 const sortedTags = await getSortedTags()
 const popularTags = sortedTags.slice(0, 6) // Top 6 tags
@@ -47,7 +48,7 @@ const position: Position = 'right-fixed' as Position // Change this to test diff
         <div class="pt-3 border-t border-border/40">
           <div class="flex gap-2">
             <Link
-              href="/rss.xml"
+              href={`${BASE}/rss.xml`}
               class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-md border border-border/60 bg-background text-foreground text-xs font-medium transition-all duration-200 hover:bg-muted/50 hover:border-border active:scale-[0.98]"
               title="RSS Feed"
             >
@@ -66,7 +67,7 @@ const position: Position = 'right-fixed' as Position // Change this to test diff
             <div class="flex flex-wrap gap-1.5">
               {popularTags.map(({ tag }) => (
                 <Link
-                  href={`/tags/${tag}`}
+                  href={`${BASE}/tags/${tag}`}
                   class="inline-flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-medium bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
                 >
                   <Icon name="lucide:hash" class="w-3 h-3" />
@@ -131,7 +132,7 @@ const position: Position = 'right-fixed' as Position // Change this to test diff
         <!-- Quick Links & Tags -->
         <div class="flex items-center gap-4">
           <Link
-            href="/rss.xml"
+            href={`${BASE}/rss.xml`}
             class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-border/60 bg-background text-foreground text-xs font-medium transition-all duration-200 hover:bg-muted/50"
           >
             <Icon name="lucide:rss" class="w-3.5 h-3.5" />
@@ -144,7 +145,7 @@ const position: Position = 'right-fixed' as Position // Change this to test diff
               <div class="flex flex-wrap gap-1">
                 {popularTags.slice(0, 4).map(({ tag }) => (
                   <Link
-                    href={`/tags/${tag}`}
+                    href={`${BASE}/tags/${tag}`}
                     class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[10px] font-medium bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
                   >
                     <Icon name="lucide:hash" class="w-2.5 h-2.5" />
@@ -199,7 +200,7 @@ const position: Position = 'right-fixed' as Position // Change this to test diff
         <!-- Quick Actions -->
         <div class="flex gap-2">
           <Link
-            href="/rss.xml"
+            href={`${BASE}/rss.xml`}
             class="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-md border border-border/60 bg-background text-foreground text-xs font-medium transition-all duration-200 hover:bg-muted/50"
           >
             <Icon name="lucide:rss" class="w-3.5 h-3.5" />
@@ -221,7 +222,7 @@ const position: Position = 'right-fixed' as Position // Change this to test diff
             <div class="flex flex-wrap gap-1">
               {popularTags.map(({ tag }) => (
                 <Link
-                  href={`/tags/${tag}`}
+                  href={`${BASE}/tags/${tag}`}
                   class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[10px] font-medium bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
                 >
                   <Icon name="lucide:hash" class="w-2.5 h-2.5" />

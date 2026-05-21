@@ -1,13 +1,15 @@
 import type { IconMap, SocialLink, Site } from '@/types'
 
-// Base path for GitHub Pages subpath deployment
-export const BASE = '/astroblog'
+// Base path — auto-detects environment
+// On Vercel: set env PUBLIC_SITE_BASE=/
+// On GitHub Pages: leave unset (defaults to /astroblog)
+export const BASE = import.meta.env.PUBLIC_SITE_BASE || '/astroblog'
 
 export const SITE: Site = {
   title: 'DOCOMOLA',
   description:
     'Code & thoughts — personal blog & projects',
-  href: 'https://docomola.github.io/astroblog',
+  href: import.meta.env.PUBLIC_SITE_URL || 'https://docomola.github.io/astroblog',
   author: 'docomola',
   locale: 'zh-CN',
   featuredPostCount: 2,

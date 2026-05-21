@@ -19,8 +19,8 @@ import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  site: 'https://docomola.github.io',
-  base: '/astroblog',
+  site: process.env.PUBLIC_SITE_URL || 'https://docomola.github.io',
+  base: process.env.PUBLIC_SITE_BASE || '/astroblog',
   output: 'static',
   integrations: [
     expressiveCode({
