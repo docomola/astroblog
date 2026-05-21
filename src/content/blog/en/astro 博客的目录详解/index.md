@@ -6,6 +6,7 @@ author: "docomola"
 tags: ["astro", "博客", "目录结构"]
 featured: true
 locale: en
+svgSlug: "astro-rocket-intro"
 ---
 
 # astro 博客的目录详解
