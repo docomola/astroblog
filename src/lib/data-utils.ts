@@ -202,7 +202,7 @@ export async function parseAuthors(authorIds: string[] = []) {
     return {
       id,
       name: author?.data?.name || id,
-      avatar: author?.data?.avatar || '/static/logo.png',
+      avatar: author?.data?.avatar || 'https://cravatar.cn/avatar/00000000000000000000000000000000?d=mp&size=256',
       isRegistered: !!author,
     }
   })
