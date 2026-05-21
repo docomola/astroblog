@@ -3,7 +3,7 @@ import BlogCard from '@/components/BlogCard.astro'
 import Breadcrumbs from '@/components/Breadcrumbs.astro'
 import PageHead from '@/components/PageHead.astro'
 import PaginationComponent from '@/components/ui/pagination'
-import { SITE } from '@/consts'
+import { SITE, BASE } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
 import { getAllPosts, groupPostsByYear } from '@/lib/data-utils'
 import type { PaginateFunction } from 'astro'
@@ -27,7 +27,7 @@ const years = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a))
   <PageHead slot="head" title="Blog" />
   <Breadcrumbs
     items={[
-      { label: 'Blog', href: '/blog', icon: 'lucide:library-big' },
+      { label: 'Blog', href: `${BASE}/blog`, icon: 'lucide:library-big' },
       { label: `Page ${page.currentPage}`, icon: 'lucide:book-copy' },
     ]}
   />
@@ -55,7 +55,7 @@ const years = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a))
     <PaginationComponent
       currentPage={page.currentPage}
       totalPages={page.lastPage}
-      baseUrl="/blog/"
+      baseUrl={`${BASE}/blog/`}
       client:idle
     />
   </div>

@@ -8,7 +8,7 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 import { Icon } from 'astro-icon/components'
-import { SITE } from '@/consts'
+import { SITE, BASE } from '@/consts'
 
 export interface BreadcrumbItem {
   href?: string
@@ -28,7 +28,7 @@ const breadcrumbItems = [
     "@type": "ListItem",
     "position": 1,
     "name": "Home",
-    "item": new URL('/', Astro.site).href
+    "item": new URL(BASE + '/', Astro.site).href
   },
   ...items.map((item, index) => ({
     "@type": "ListItem",
@@ -51,7 +51,7 @@ const breadcrumbSchema = {
 <Breadcrumb>
   <BreadcrumbList>
     <BreadcrumbItem>
-      <BreadcrumbLink href="/">
+      <BreadcrumbLink href={BASE + '/'}>
         <Icon name="lucide:home" class="size-4 shrink-0" />
       </BreadcrumbLink>
     </BreadcrumbItem>

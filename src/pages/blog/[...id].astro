@@ -11,7 +11,7 @@ import TOCSidebar from '@/components/TOCSidebar.astro'
 import { badgeVariants } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import Layout from '@/layouts/Layout.astro'
-import { SITE } from '@/consts'
+import { SITE, BASE } from '@/consts'
 import {
   getAdjacentPosts,
   getAllPostsAndSubposts,
@@ -116,23 +116,23 @@ try {
     <div class="col-start-2">
       <Breadcrumbs
         items={[
-          { href: '/blog', label: 'Blog', icon: 'lucide:library-big' },
+          { href: `${BASE}/blog`, label: 'Blog', icon: 'lucide:library-big' },
           ...(isCurrentSubpost && parentPost
             ? [
                 {
-                  href: `/blog/${parentPost.id}`,
+                  href: `${BASE}/blog/${parentPost.id}`,
                   label: parentPost.data.title,
                   icon: 'lucide:book-open',
                 },
                 {
-                  href: `/blog/${currentPostId}`,
+                  href: `${BASE}/blog/${currentPostId}`,
                   label: post.data.title,
                   icon: 'lucide:file-text',
                 },
               ]
             : [
                 {
-                  href: `/blog/${currentPostId}`,
+                  href: `${BASE}/blog/${currentPostId}`,
                   label: post.data.title,
                   icon: 'lucide:book-open-text',
                 },
@@ -179,7 +179,7 @@ try {
                     />
                     {author.isRegistered ? (
                       <Link
-                        href={`/authors/${author.id}`}
+                        href={`${BASE}/authors/${author.id}`}
                         underline
                         class="text-foreground"
                       >
@@ -235,7 +235,7 @@ try {
                 return (
                   <div class="group relative">
                     <a
-                      href={`/tags/${tag}`}
+                      href={`${BASE}/tags/${tag}`}
                       class={`${badgeVariants({ variant })} ${className || ''}`}
                     >
                       <Icon name="lucide:hash" class="size-3" />
@@ -295,7 +295,7 @@ try {
           <Disqus
             identifier={`blog-${currentPostId}`}
             title={post.data.title}
-            url={new URL(`/blog/${currentPostId}`, SITE.href).href}
+            url={new URL(`${BASE}/blog/${currentPostId}`, SITE.href).href}
           />
         </div>
       )
