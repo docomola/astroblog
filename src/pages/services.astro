@@ -10,6 +10,8 @@ import Card from '@/components/ui/data-display/Card/Card.astro';
 import Button from '@/components/ui/form/Button/Button.astro';
 import { Hero } from '@/components/hero';
 import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
+
+const BASE = '/astroblog';
 ---
 <PageLayout
   title="Services — Web Design, Development & Performance"
@@ -66,7 +68,7 @@ import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
           <p class="text-lg text-foreground-muted leading-relaxed">
             Every screen is considered: desktop, tablet, and the phone someone holds at the bus stop. The brand stays consistent across the whole experience, and the small details are treated as part of the design, not the polish.
           </p>
-          <Button variant="outline" href="/contact" class="self-start mt-2">
+          <Button variant="outline" href={`${BASE}/contact`} class="self-start mt-2">
             Discuss a design project
             <Icon name="arrow-right" size="sm" />
           </Button>
@@ -143,7 +145,7 @@ import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
           <p class="text-lg text-foreground-muted leading-relaxed">
             Architecture matters as much as output: typed content, predictable component boundaries, and a build pipeline a future developer (or future you) can pick up without a guided tour.
           </p>
-          <Button variant="outline" href="/projects" class="self-start mt-2">
+          <Button variant="outline" href={`${BASE}/projects`} class="self-start mt-2">
             See recent projects
             <Icon name="arrow-right" size="sm" />
           </Button>
@@ -220,7 +222,7 @@ import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
           <p class="text-lg text-foreground-muted leading-relaxed">
             I work to measurable targets, not vibes. Core Web Vitals, technical SEO, and accessibility are tracked, tuned, and verified before launch — and the dashboards stay yours after handover.
           </p>
-          <Button variant="outline" href="/contact" class="self-start mt-2">
+          <Button variant="outline" href={`${BASE}/contact`} class="self-start mt-2">
             Start a project
             <Icon name="arrow-right" size="sm" />
           </Button>
@@ -362,11 +364,11 @@ import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
         Send a short note about what you're building and what you need. I read every message and reply within a working day.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button size="lg" href="/contact" class="cta-btn-brand">
+        <Button size="lg" href={`${BASE}/contact`} class="cta-btn-brand">
           Start a project
           <Icon name="arrow-right" size="sm" />
         </Button>
-        <Button size="lg" variant="outline" href="/about">
+        <Button size="lg" variant="outline" href={`${BASE}/about`}>
           More about me
           <Icon name="arrow-right" size="sm" />
         </Button>
@@ -382,11 +384,11 @@ import LetterGlitchBand from '@/components/patterns/LetterGlitchBand.astro';
         Send a short note about what you're building and what you need. I read every message and reply within a working day.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button size="lg" href="/contact" class="hero-btn-brand">
+        <Button size="lg" href={`${BASE}/contact`} class="hero-btn-brand">
           Start a project
           <Icon name="arrow-right" size="sm" />
         </Button>
-        <Button size="lg" variant="outline" href="/about">
+        <Button size="lg" variant="outline" href={`${BASE}/about`}>
           More about me
           <Icon name="arrow-right" size="sm" />
         </Button>

@@ -78,9 +78,11 @@ const sidebarActive = showToc && (tocLayout === 'sidebar' || tocLayout === 'auto
 const inlineActive = showToc && tocLayout === 'inline';
 const sidebarOnLeft = (tocConfig?.sidebarPosition ?? 'right') === 'left';
 
+const BASE = '/astroblog';
+
 const breadcrumbs = [
-  { label: 'Home', href: '/' },
-  { label: 'Projects', href: '/projects' },
+  { label: 'Home', href: `${BASE}/` },
+  { label: 'Projects', href: `${BASE}/projects` },
   { label: title },
 ];
 ---
@@ -155,7 +157,7 @@ const breadcrumbs = [
           </div>
 
           <footer class="border-border mt-12 border-t pt-8" data-reveal>
-            <Button href="/projects" variant="secondary" size="sm">
+            <Button href={`${BASE}/projects`} variant="secondary" size="sm">
               <Icon name="arrow-left" size="sm" />
               Back to Projects
             </Button>
@@ -185,7 +187,7 @@ const breadcrumbs = [
                 variant="elevated"
                 hover
                 padding="none"
-                href={project.data.placeholder ? undefined : `/projects/${project.id.replace(/\.mdx?$/, '')}`}
+                href={project.data.placeholder ? undefined : `${BASE}/projects/${project.id.replace(/\.mdx?$/, '')}`}
                 class="group flex flex-col"
               >
                 <div class="flex flex-1 flex-col p-6">
@@ -236,7 +238,7 @@ const breadcrumbs = [
             Start a project
             <Icon name="arrow-right" size="sm" />
           </Button>
-          <Button size="lg" variant="outline" href="/projects">
+          <Button size="lg" variant="outline" href={`${BASE}/projects`}>
             All projects
             <Icon name="arrow-right" size="sm" />
           </Button>
@@ -256,7 +258,7 @@ const breadcrumbs = [
             Start a project
             <Icon name="arrow-right" size="sm" />
           </Button>
-          <Button size="lg" variant="outline" href="/projects">
+          <Button size="lg" variant="outline" href={`${BASE}/projects`}>
             All projects
             <Icon name="arrow-right" size="sm" />
           </Button>

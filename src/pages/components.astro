@@ -42,6 +42,8 @@ import SearchInput from '@/components/patterns/SearchInput.astro';
 import PasswordInput from '@/components/patterns/PasswordInput.astro';
 import StatCard from '@/components/patterns/StatCard.astro';
 import EmptyState from '@/components/patterns/EmptyState.astro';
+
+const BASE = '/astroblog';
 ---
 
 <PageLayout
@@ -2012,7 +2014,7 @@ import EmptyState from '@/components/patterns/EmptyState.astro';
         <Icon name="github" size="sm" />
         Clone Repository
       </Button>
-      <Button variant="outline" href="/blog">
+      <Button variant="outline" href={`${BASE}/blog`}>
         Read Documentation
       </Button>
     </Fragment>

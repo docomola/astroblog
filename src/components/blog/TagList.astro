@@ -6,6 +6,8 @@
  */
 import { tagToSlug } from '@/lib/blog';
 
+const BASE = '/astroblog';
+
 interface Props {
   tags: string[];
   /** Highlight this tag (used on the tag archive page). */
@@ -24,7 +26,7 @@ const { tags, active, class: extraClass } = Astro.props;
       return (
         <li>
           <a
-            href={`/blog/tag/${tagToSlug(tag)}`}
+            href={`${BASE}/blog/tag/${tagToSlug(tag)}`}
             class:list={[
               'inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition-colors',
               isActive

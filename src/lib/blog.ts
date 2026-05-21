@@ -41,7 +41,7 @@ export function getPostSlug(postId: string, locale = 'en'): string {
 
 /** URL path for an individual blog post. */
 export function getPostUrl(postId: string, locale = 'en'): string {
-  return `/blog/${getPostSlug(postId, locale)}`;
+  return `/astroblog/blog/${getPostSlug(postId, locale)}`;
 }
 
 /**

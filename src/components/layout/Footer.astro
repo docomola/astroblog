@@ -145,6 +145,8 @@ const socialIcons: Record<string, string> = {
 function getSocialIcon(platform: string): string {
   return socialIcons[platform] || platform;
 }
+
+const BASE = '/astroblog';
 ---
 
 <footer class={footerClasses} {...attrs}>
@@ -158,7 +160,7 @@ function getSocialIcon(platform: string): string {
             {hasLogoSlot ? (
               <slot name="logo" />
             ) : (
-              <a href="/" class="flex items-center gap-2">
+              <a href={`${BASE}/`} class="flex items-center gap-2">
                 <Logo size="md" class="bg-brand-600" />
                 <span class="font-display text-base font-bold text-brand-600 dark:text-foreground">
                   {siteConfig.name}
@@ -225,7 +227,7 @@ function getSocialIcon(platform: string): string {
               {hasLogoSlot ? (
                 <slot name="logo" />
               ) : (
-                <a href="/" class="flex items-center gap-2">
+                <a href={`${BASE}/`} class="flex items-center gap-2">
                   <Logo size="md" class="bg-brand-600" />
                   <span class="font-display text-base font-bold text-brand-600 dark:text-foreground">
                     {siteConfig.name}
@@ -328,7 +330,7 @@ function getSocialIcon(platform: string): string {
           hasLogoSlot ? (
             <slot name="logo" />
           ) : (
-            <a href="/" class="flex items-center gap-2">
+            <a href={`${BASE}/`} class="flex items-center gap-2">
               <Logo size="md" class="bg-brand-600" />
               <span class="font-display text-xl font-bold text-brand-600 dark:text-foreground">
                 {siteConfig.name}
