@@ -1,14 +1,11 @@
 ---
----
-title: "文章标题"
-description: "SEO 描述，约 120-160 字"
+title: "Astro 博客的目录详解"
+description: "Astro-Rocket 博客的完整目录结构详解，帮助你快速理解各文件夹作用"
 publishedAt: 2026-05-21
 author: "docomola"
-tags: ["标签1", "标签2"]
-featured: true          # 可选，标记为精选文章
+tags: ["astro", "博客", "目录结构"]
+featured: true
 locale: en
----
-正文内容...
 ---
 
 # astro 博客的目录详解
